@@ -18,6 +18,7 @@ const ToolbarLayout = styled.div`
 const ToolbarContainer = styled(Container)`
     display: flex;
     justify-content: space-between;
+    align-items: center;
 `;
 
 export { ToolbarLayout, ToolbarContainer };

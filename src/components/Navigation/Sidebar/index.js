@@ -3,39 +3,44 @@ import { connect } from 'react-redux';
 
 import { SidebarLayout } from './SidebarLayout';
 import { List, ListElement, ListLink } from './List';
-import { getLessons, setLessonsList } from '../../../store/Lessons/actions';
+import { getLessons, clearLessons } from '../../../store/Lessons/actions';
 
-const Sidebar = ({getLessons, setLessonsList, lessonList}) => {
+const Sidebar = ({getLessons, clearLessons, loading, lessons}) => {
     useEffect(() => {
         getLessons();
 
         return () => {
-            setLessonsList([]);
+            clearLessons();
         }
-    }, [getLessons, setLessonsList]);
+    }, [getLessons, clearLessons]);
 
-    const lessons = lessonList.map((lesson, index) => (
-        <ListElement key={lesson.id}>
-            <ListLink to={{ pathname: `/lessons/${lesson.title}`, search: `?id=${lesson.id}` }}>{index+1}. {lesson.title}</ListLink>
-        </ListElement>
-    ));
+    let lessonList = <p>Loading...</p>;
+
+    if(!loading) {
+        lessonList = lessons.map((lesson, index) => (
+            <ListElement key={lesson.id}>
+                <ListLink to={{ pathname: `/lessons/${lesson.title}`, search: `?id=${lesson.id}` }}>{index+1}. {lesson.title}</ListLink>
+            </ListElement>
+        ));
+    }
 
     return (
         <SidebarLayout>
             <List>
-                {lessons}
+                {lessonList}
             </List>
         </SidebarLayout>
     );
 }
 
 const mapStateToProps = state => ({
-    lessonList: state.lessons.lessonList
+    lessons: state.lessons.lessonList,
+    loading: state.lessons.loading
 });
 
 const mapDispatchToProps = {
     getLessons,
-    setLessonsList
+    clearLessons
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

@@ -6,6 +6,7 @@ const List = styled.ul`
     margin: 0;
     padding: 0;
 
+    align-self: stretch;
     display: flex;
 `;
 
@@ -14,12 +15,12 @@ const ListLink = styled(Link)`
     height: 100%;
     color: #fff;
     text-decoration: none;
+    padding: 0 20px;
     display: flex;
     align-items: center;
 `;
 
 const ListElement = styled.li`
-    padding: 0 20px;
     margin-left: -4px;
     position: relative;
     transition: background 0.35s ease; 
