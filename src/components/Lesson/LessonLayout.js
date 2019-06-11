@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
+import { em } from '../../helpers/heleprs';
+
 const LessonLayout = styled.div`
     width: 100%;
-    min-height: 150px;
+    min-height: ${em(150)};
     background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0px 0px 15px #ccc;
-    padding-right: 20px;
-    margin-bottom: 20px;
+    border: ${em(1)} solid #ccc;
+    border-radius: ${em(8)};
+    box-shadow: 0 0 ${em(15)} #ccc;
+    padding-right: ${em(20)};
+    margin-bottom: ${em(20)};
     display: flex;
 
 `;

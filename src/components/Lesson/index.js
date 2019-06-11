@@ -15,10 +15,12 @@ const Lesson = (props) => {
                 <i className="fa fa-folder-open-o" aria-hidden="true"></i>
             </Icon>
             <Header>
-                <H3>
+                <H3 width="70%">
                     <LessonLink to={{ pathname: `/lessons/${props.title}`, search: `?id=${props.id}` }}>{props.title}</LessonLink>
                 </H3>
-                <Button buttonColor="#07a9e4" onClick={() => history.push({ pathname: `/lessons/${props.title}`, search: `?id=${props.id}` })}>Przejdź do lekcji</Button>
+                <Button 
+                    buttonColor="#07a9e4"
+                    onClick={() => history.push({ pathname: `/lessons/${props.title}`, search: `?id=${props.id}` })}>Przejdź do lekcji</Button>
             </Header>
         </LessonLayout>
     );

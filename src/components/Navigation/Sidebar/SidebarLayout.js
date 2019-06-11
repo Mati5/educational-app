@@ -1,16 +1,18 @@
 
 import styled from 'styled-components'
 
+import { em } from '../../../helpers/heleprs';
+
 const SidebarLayout = styled.div`
   width: 100%;
   height: 100%;
   background-color: #e4e5e5;
   overflow-y: scroll;
   opacity: 1;
-  padding: 20px 20px 100px;
+  padding: ${em(20)} ${em(20)} ${em(100)};
   box-sizing: border-box;
   position: fixed;
-  top: 70px;
+  top: ${em(70)};
   left: 0;
   z-index: 1;
   transition: 0.5s ease-in-out;
@@ -21,7 +23,7 @@ const SidebarLayout = styled.div`
   }
 
   ::-webkit-scrollbar {
-    width: 8px;
+    width: ${em(8)};
   }
 
   ::-webkit-scrollbar-track {

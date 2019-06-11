@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
+import { em } from '../../helpers/heleprs';
+
 const Logo = styled.div`
-    width: 50px;
-    height: 50px;
+    width: ${em(35)};
+    height: ${em(35)};
     color: #fff;
-    font-size: 24px;
+    font-size: ${em(24)};
     border-radius: 50%;
-    border: 2px solid #fff;
-    padding: 9px;
+    border: ${em(1)} solid #fff;
+    padding: ${em(9)};
     display: flex;
     justify-content: center;
     align-items: center;

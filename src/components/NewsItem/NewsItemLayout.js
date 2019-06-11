@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
+import { em } from '../../helpers/heleprs';
+
 const NewsItemLayout = styled.div`
     width: 100%;
-    border-bottom: 2px solid #db4a37;
-    padding-bottom: 40px;
-    margin: 40px 0;
+    border-bottom: ${em(2)} solid #db4a37;
+    padding-bottom: ${em(40)};
+    margin: ${em(40)} 0;
 
     @media(min-width: 768px) {
         display: flex;

@@ -4,8 +4,9 @@ const Header = styled.div`
     width: 80%;
     margin-left: 3%;
     display: flex;
-    flex-direction: column
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 `;
 
 export { Header };

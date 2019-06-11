@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
+import { em } from '../../helpers/heleprs';
+
 const Thumbnail = styled.div`
-    max-width: 376px;
+    max-width: ${em(376)};
     text-align: center;
     overflow: hidden;
     margin: 0 auto;

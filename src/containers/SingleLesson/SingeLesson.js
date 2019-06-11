@@ -8,6 +8,7 @@ import { ToggleButton } from '../../components/Navigation/ToggleButton/index';
 
 const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, location}) => {
     let [showSidebar, setSidebarOpened] = useState(true);
+    
     useEffect(() => {
         const params = new URLSearchParams(location.search);
         getSingleLesson(params.get('id'));
@@ -15,14 +16,6 @@ const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, locat
             setSelectedLesson(null);
         }
     }, [getSingleLesson, setSelectedLesson, location]);
-
-    useEffect(()=> {
-        window.addEventListener('resize', checkWidth);
-
-        return() => {
-            window.removeEventListener('resize', checkWidth);
-        }
-    });
 
     const checkWidth = () => {
         if(window.innerWidth < 768) {
@@ -32,7 +25,16 @@ const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, locat
             setSidebarOpened(true);
         }
     }
-    
+
+    useEffect(()=> {
+        checkWidth();
+        window.addEventListener('resize', checkWidth);
+
+        return() => {
+            window.removeEventListener('resize', checkWidth);
+        }
+    }, []);
+
     let lesson = <p>Loading....</p>;
     if(selectedLesson) {
         lesson = ( 
