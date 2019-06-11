@@ -5,7 +5,7 @@ import { SidebarLayout } from './SidebarLayout';
 import { List, ListElement, ListLink } from './List';
 import { getLessons, clearLessons } from '../../../store/Lessons/actions';
 
-const Sidebar = ({getLessons, clearLessons, loading, lessons}) => {
+const Sidebar = ({getLessons, clearLessons, loading, lessons, sidebarOpened}) => {
     useEffect(() => {
         getLessons();
 
@@ -25,11 +25,13 @@ const Sidebar = ({getLessons, clearLessons, loading, lessons}) => {
     }
 
     return (
-        <SidebarLayout>
-            <List>
-                {lessonList}
-            </List>
-        </SidebarLayout>
+        <React.Fragment>
+            <SidebarLayout opened={sidebarOpened}>
+                <List>
+                    {lessonList}
+                </List>
+            </SidebarLayout>
+        </React.Fragment>
     );
 }
 

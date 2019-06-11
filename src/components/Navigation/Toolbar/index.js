@@ -9,14 +9,14 @@ export const Toolbar = () => {
         <ToolbarLayout>
             <ToolbarContainer>
                 <Logo>
-                    <i class="fa fa-code" aria-hidden="true"></i>
+                    <i className="fa fa-code" aria-hidden="true"></i>
                 </Logo>
                 <List>
                     <ListElement>
                         <ListLink to="/">Strona główna</ListLink>
                     </ListElement>
                     <ListElement>
-                        <ListLink to="/">Aktualności</ListLink>
+                        <ListLink to="/news">Aktualności</ListLink>
                     </ListElement>
                     <ListElement>
                         <ListLink to="/lessons">Lekcje</ListLink>

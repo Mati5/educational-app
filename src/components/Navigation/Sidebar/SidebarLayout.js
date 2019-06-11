@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 
 const SidebarLayout = styled.div`
-  width: 35%;
+  width: 100%;
   height: 100%;
   background-color: #e4e5e5;
   overflow-y: scroll;
@@ -14,6 +14,11 @@ const SidebarLayout = styled.div`
   left: 0;
   z-index: 1;
   transition: 0.5s ease-in-out;
+  display: ${props => props.opened ? "block" : "none" };
+
+  @media(min-width: 768px) {
+    width: 35%
+  }
 
   ::-webkit-scrollbar {
     width: 8px;

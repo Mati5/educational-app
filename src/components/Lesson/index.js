@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import history from '../../history';
 
 import { LessonLayout } from './LessonLayout';
 import { Icon } from './Icon';
 import { Header } from './Header';
 import { Button } from '../../components/UI/Button/Button';
-import { H3 } from '../Headers/Headers';
+import { H3 } from '../Headers';
+import { LessonLink } from './Link';
 
 const Lesson = (props) => {
     return(
@@ -15,9 +16,9 @@ const Lesson = (props) => {
             </Icon>
             <Header>
                 <H3>
-                    <Link to={{ pathname: `/lessons/${props.title}`, search: `?id=${props.id}` }}>{props.title}</Link>
+                    <LessonLink to={{ pathname: `/lessons/${props.title}`, search: `?id=${props.id}` }}>{props.title}</LessonLink>
                 </H3>
-                <Button buttonColor="#07a9e4">Przejdź do lekcji</Button>
+                <Button buttonColor="#07a9e4" onClick={() => history.push({ pathname: `/lessons/${props.title}`, search: `?id=${props.id}` })}>Przejdź do lekcji</Button>
             </Header>
         </LessonLayout>
     );
