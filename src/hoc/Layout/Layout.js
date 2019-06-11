@@ -9,7 +9,7 @@ const Main = styled.div`
     margin-top: 70px;
 `;
 
-const Layout = ({selectedLesson, loading, children}) => {
+const Layout = ({selectedLesson, children}) => {
     return (
         <React.Fragment>
             <Toolbar />
