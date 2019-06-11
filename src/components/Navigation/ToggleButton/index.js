@@ -11,7 +11,7 @@ const ToggleButton = styled.button`
     border: 0;
 
     position: fixed;
-    top: ${em(90)};
+    top: ${em(70)};
     left: 0;
     z-index: 999;
     transition: 0.2s ease-in-out;

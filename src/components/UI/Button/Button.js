@@ -17,6 +17,11 @@ const Button = styled.button`
     border: ${em(1)} solid ${props => props.buttonColor || "#000"};
     border-radius: ${em(30)};
     padding: ${em(15)} ${em(20)};
+
+    :hover {
+        cursor: pointer;
+        opacity: 0.5;
+    }
 `;
 
 export { Button };

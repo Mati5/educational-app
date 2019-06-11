@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getLessons, clearLessons } from '../../store/Lessons/actions';
 import Lesson from '../../components/Lesson/index';
 import { Container } from '../../components/Container/Container';
-import { H2 } from '../../components/Headers';
+import { HeaderSection } from '../../components/Headers/HeaderSection';
 
 const Lessons = ({getLessons, clearLessons, loading, lessons}) => {
     useEffect(() => {
@@ -24,7 +24,7 @@ const Lessons = ({getLessons, clearLessons, loading, lessons}) => {
    
     return(
         <Container>
-            <H2><i className="fa fa-book" aria-hidden="true"></i>Lekcje</H2>
+            <HeaderSection><i className="fa fa-book" aria-hidden="true"></i>Lekcje</HeaderSection>
             {lessonList}
         </Container>   
     );

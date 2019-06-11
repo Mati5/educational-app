@@ -18,7 +18,7 @@ const H2 = styled.h2`
     font-family: 'Dosis';
     color: #333;
     font-size: ${em(25)};
-    padding: ${em(30)} 0;
+    padding: ${em(20)} 0;
     transition: 0.35s color linear;
 `;
 
@@ -29,8 +29,6 @@ const H3 = styled.h3`
     font-family: 'Dosis';
     color: #333;
     font-size: ${em(25)};
-    margin-top: ${em(3)};
-    margin-bottom: ${em(20)};
     transition: 0.35s color linear;
 `;
 
