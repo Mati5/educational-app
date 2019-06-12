@@ -5,7 +5,7 @@ import { ToolbarLayout, ToolbarContainer } from './ToolbarLayout';
 import { Logo } from '../../Logo/Logo';
 import { List, ListElement, ListLink } from './List';
  
-export const Toolbar = () => {
+const Toolbar = () => {
     return (
         <ToolbarLayout>
             <ToolbarContainer>
@@ -29,3 +29,5 @@ export const Toolbar = () => {
         </ToolbarLayout>
     );
 }
+
+export default Toolbar;
