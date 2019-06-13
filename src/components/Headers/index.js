@@ -24,11 +24,11 @@ const H2 = styled.h2`
 
 const H3 = styled.h3`
     width: ${props => props.width};
-    font-weight: 400;
+    font-weight: 300;
     text-transform: uppercase;
     font-family: 'Dosis';
     color: #333;
-    font-size: ${em(25)};
+    font-size: ${em(20)};
     transition: 0.35s color linear;
 `;
 
