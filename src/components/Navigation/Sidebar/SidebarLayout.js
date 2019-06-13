@@ -22,6 +22,10 @@ const SidebarLayout = styled.div`
     width: 35%
   }
 
+  @media(min-width: 1192px) {
+    width: ${em(400)};
+  }
+
   ::-webkit-scrollbar {
     width: ${em(8)};
   }

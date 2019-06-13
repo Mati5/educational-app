@@ -35,12 +35,13 @@ const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, locat
         }
     }, []);
 
-    let lesson = <p>Loading....</p>;
+    let lesson = <p>Loading...</p>;
     if(selectedLesson) {
         lesson = ( 
-            <SingleLessonLayout sidebarOpened={showSidebar}>
-                <h2>{selectedLesson.title}</h2><p>{selectedLesson.content}</p>
-            </SingleLessonLayout>
+            <React.Fragment>
+                <h2>{selectedLesson.title}</h2>
+                <p>{selectedLesson.content}</p>
+            </React.Fragment>
         );
     }
 
@@ -53,7 +54,9 @@ const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, locat
                     sidebarOpened={showSidebar}
                     onClick={() => setSidebarOpened(!showSidebar)}>{toggleButtonContent}</ToggleButton>
                 <Sidebar sidebarOpened={showSidebar} />
-                {lesson}
+                <SingleLessonLayout sidebarOpened={showSidebar}>
+                    {lesson}
+                </SingleLessonLayout>
             </React.Fragment>
         </div>
     );
@@ -69,3 +72,4 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleLesson);
+export { SingleLesson }

@@ -41,3 +41,4 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Lessons);
+export { Lessons };

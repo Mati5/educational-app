@@ -1,0 +1,33 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+
+import { SingleLesson } from './SingleLesson';
+import Sidebar from '../../components/Navigation/Sidebar/index';
+import { SingleLessonLayout } from '../../components/SingleLesson/SingleLessonLayout';
+import { ToggleButton } from '../../components/Navigation/ToggleButton/index';
+
+describe("<Lessons />", () => {
+    let lessonList;
+    let wrapper; 
+    let singleLesson;
+
+    beforeEach(() => {
+        singleLesson = {
+            title: "example",
+            conent: "text"
+        }
+    });
+    
+    it("Should render single lesson", () => {
+        wrapper = shallow(<SingleLesson />);
+        expect(wrapper.find(Sidebar)).toHaveLength(1);
+        expect(wrapper.find(SingleLessonLayout)).toHaveLength(1);
+        expect(wrapper.find(ToggleButton)).toHaveLength(1);
+    });
+
+    it("Should show spinner when loading", () => {
+        wrapper = shallow(<SingleLesson loading={true} />);
+
+        expect(wrapper.find('p').text()).toEqual("Loading...");
+    });
+});

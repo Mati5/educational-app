@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router';
 
 import Lessons from './containers/Lessons/Lessons';
-import SingleLesson from './containers/SingleLesson/SingeLesson';
+import SingleLesson from './containers/SingleLesson/SingleLesson';
 import Home from './containers/Home/Home';
 import News from './containers/News/News';
 import Layout from './hoc/Layout/Layout';
