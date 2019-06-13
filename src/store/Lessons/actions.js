@@ -2,12 +2,22 @@ import axios from 'axios';
 
 import * as actionTypes from './actionTypes';
 
-export const setLessonsList = (lessonsList) => ({
-    type: actionTypes.SET_LESSON_LIST,
+export const getLessonsAction = () => ({
+    type: actionTypes.GET_LESSONS
+});
+
+export const getLessonsSuccess = (lessonsList) => ({
+    type: actionTypes.GET_LESSONS_SUCCESS,
     payload: lessonsList
 });
 
+export const clearLessons = () => ({
+    type: actionTypes.CLEAR_LESSONS
+});
+
 export const getLessons = () => dispatch => {
+    dispatch(getLessonsAction());
+
     axios.get('https://educational-app-d2b14.firebaseio.com/lessons.json')
         .then(response => {
             let cityList = [];
@@ -16,7 +26,7 @@ export const getLessons = () => dispatch => {
                 cityList.push(response.data[key]);
             }
             
-            dispatch(setLessonsList(cityList));
+            dispatch(getLessonsSuccess(cityList));
         })
         .catch(error => {
             console.log(error);

@@ -1,20 +1,41 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import history from '../../history';
 
-import { Toolbar } from '../../components/Navigation/Toolbar/index';
+import Toolbar from '../../components/Navigation/Toolbar/index';
+import Footer from '../../components/Footer/index';
 
 const Main = styled.div`
-    margin-top: 100px;
+    margin-top: 70px;
 `;
 
-const Layout = (props) => {
+const Layout = ({children}) => {
+    const [footer, setFooter] = useState(<Footer />);
+
+    const checkPath = () => {
+        const pathname = history.location.pathname.split("/");
+        if(pathname[1] === "lessons" && pathname[2]) {
+            setFooter(null);
+        }
+        else {
+            setFooter(<Footer />);
+        }
+    }
+
+    useEffect(() => {
+        checkPath();
+        history.listen(() => {
+            checkPath();
+        });
+    }, [setFooter]);
+
     return (
         <React.Fragment>
             <Toolbar />
             <Main>
-                {props.children}
+                {children}
             </Main>
+            {footer}
         </React.Fragment>
     );
 }

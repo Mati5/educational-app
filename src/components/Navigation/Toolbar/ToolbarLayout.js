@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
 import { Container } from '../../Container/Container';
+import { em } from '../.././../helpers/heleprs';
 
 const ToolbarLayout = styled.div`
     background-color: #00405d;
     width: 100%;
-    min-height: 72px;
+    min-height: ${em(72)};
     display: flex;
     justify-content: space-between;
 
@@ -18,6 +19,7 @@ const ToolbarLayout = styled.div`
 const ToolbarContainer = styled(Container)`
     display: flex;
     justify-content: space-between;
+    align-items: center;
 `;
 
 export { ToolbarLayout, ToolbarContainer };
