@@ -8,7 +8,7 @@ import { List, ListElement, ListLink } from './List';
 const Toolbar = () => {
     return (
         <ToolbarLayout>
-            <ToolbarContainer>
+            <ToolbarContainer as="nav">
             <Link to="/">
                 <Logo>
                     <i className="fa fa-code" aria-hidden="true"></i>

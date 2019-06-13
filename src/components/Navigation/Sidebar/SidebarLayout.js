@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { em } from '../../../helpers/heleprs';
 
-const SidebarLayout = styled.div`
+const SidebarLayout = styled.nav`
   width: 100%;
   height: 100%;
   background-color: #e4e5e5;

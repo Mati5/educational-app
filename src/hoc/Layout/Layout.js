@@ -5,7 +5,7 @@ import history from '../../history';
 import Toolbar from '../../components/Navigation/Toolbar/index';
 import Footer from '../../components/Footer/index';
 
-const Main = styled.div`
+const Main = styled.main`
     margin-top: 70px;
 `;
 

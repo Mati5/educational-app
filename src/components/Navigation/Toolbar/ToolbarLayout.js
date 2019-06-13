@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Container } from '../../Container/Container';
 import { em } from '../.././../helpers/heleprs';
 
-const ToolbarLayout = styled.div`
+const ToolbarLayout = styled.header`
     background-color: #00405d;
     width: 100%;
     min-height: ${em(72)};
