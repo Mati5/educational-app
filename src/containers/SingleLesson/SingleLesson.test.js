@@ -5,6 +5,7 @@ import { SingleLesson } from './SingleLesson';
 import  LessonList  from './LessonList';
 import { Lesson } from '../../components/Lesson/index';
 import { ToggleButton } from '../../components/Navigation/ToggleButton/index';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 describe("<Lessons />", () => {
     let lessonList;
@@ -28,6 +29,6 @@ describe("<Lessons />", () => {
     it("Should show spinner when loading", () => {
         wrapper = shallow(<SingleLesson loading={true} />);
 
-        expect(wrapper.find('p').text()).toEqual("Loading...");
+        expect(wrapper.find(LinearProgress)).toHaveLength(1);
     });
 });

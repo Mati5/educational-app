@@ -9,6 +9,8 @@ import { Button } from '../../components/UI/Button/Button';
 import { H3 } from '../../components/Headers/index';
 import { LessonLink } from '../../components/Rectangle/Link';
 
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 describe("<Lessons />", () => {
     let lessonList;
     let wrapper; 
@@ -43,6 +45,6 @@ describe("<Lessons />", () => {
     it("Should show spinner when loading", () => {
         wrapper = shallow(<Lessons loading={true} />);
 
-        expect(wrapper.find('p').text()).toEqual("Loading...");
+        expect(wrapper.find(CircularProgress)).toHaveLength(1);
     });
 });

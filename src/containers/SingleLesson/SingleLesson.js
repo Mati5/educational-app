@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+import LinearProgress from '@material-ui/core/LinearProgress';
+
 import { getSingleLesson, setSelectedLesson } from '../../store/Lessons/actions';
 import LessonList from './LessonList';
 import { Lesson } from '../../components/Lesson/index';
@@ -35,12 +39,18 @@ const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, locat
         }
     }, []);
 
-    let lesson = <p>Loading...</p>;
+    let lesson = <LinearProgress />;
     if(selectedLesson) {
         lesson = ( 
             <React.Fragment>
-                <h1>{selectedLesson.title}</h1>
-                <div dangerouslySetInnerHTML={{__html: selectedLesson.content}} />
+                <Lesson.Header>
+                    <Lesson.Title>{selectedLesson.title}</Lesson.Title>
+                    <Lesson.Details>
+                        <FontAwesomeIcon icon={faCalendarAlt} />
+                        <Lesson.Details.Date>19.06.2019</Lesson.Details.Date>
+                    </Lesson.Details>
+                </Lesson.Header>
+                <Lesson.Content dangerouslySetInnerHTML={{__html: selectedLesson.content}} />
             </React.Fragment>
         );
     }

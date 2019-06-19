@@ -8,7 +8,7 @@ import { Footer } from '../../components/Footer/index';
 import { AppContainer } from '../../components/AppContainer/AppContainer';
 
 const Main = styled.main`
-    margin-top: 70px;
+    margin-top: 72px;
 `;
 
 const Layout = ({children}) => {

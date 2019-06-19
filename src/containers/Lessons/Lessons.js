@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import history from '../../history';
 import { getLessons, clearLessons } from '../../store/Lessons/actions';
 
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolderOpen } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '../../components/UI/Button/Button';
@@ -21,7 +22,7 @@ const Lessons = ({getLessons, clearLessons, loading, lessons}) => {
         }
     }, [getLessons, clearLessons]);
 
-    let lessonList = <p>Loading...</p>
+    let lessonList = <CircularProgress />
     if(!loading) {
         lessonList = lessons.map(lesson => (
             // <Lesson key={lesson.id} title={lesson.title} content={lesson.content} id={lesson.id} />
