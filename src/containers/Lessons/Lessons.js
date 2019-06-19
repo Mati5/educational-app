@@ -1,10 +1,17 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import history from '../../history';
 import { getLessons, clearLessons } from '../../store/Lessons/actions';
-import Lesson from '../../components/Lesson/index';
-import { Container } from '../../components/Container/Container';
+
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFolderOpen } from '@fortawesome/free-solid-svg-icons'
+import { Button } from '../../components/UI/Button/Button';
+import { H3 } from '../../components/Headers/index';
+import { AppContainer } from '../../components/AppContainer/AppContainer';
 import { HeaderSection } from '../../components/Headers/HeaderSection';
+import { Rectangle } from '../../components/Rectangle/index';
 
 const Lessons = ({getLessons, clearLessons, loading, lessons}) => {
     useEffect(() => {
@@ -15,18 +22,31 @@ const Lessons = ({getLessons, clearLessons, loading, lessons}) => {
         }
     }, [getLessons, clearLessons]);
 
-    let lessonList = <p>Loading...</p>
+    let lessonList = <CircularProgress />
     if(!loading) {
         lessonList = lessons.map(lesson => (
-            <Lesson key={lesson.id} title={lesson.title} content={lesson.content} id={lesson.id} />
+            // <Lesson key={lesson.id} title={lesson.title} content={lesson.content} id={lesson.id} />
+            <Rectangle key={lesson.id}>
+                <Rectangle.Icon>
+                    <FontAwesomeIcon icon={faFolderOpen} />
+                </Rectangle.Icon>
+                <Rectangle.Header>
+                    <H3 width="70%">
+                        <Rectangle.Link to={{ pathname: `/lessons/${lesson.title}`, search: `?id=${lesson.id}` }}>{lesson.title}</Rectangle.Link>
+                    </H3>
+                    <Button 
+                        buttonColor="#07a9e4"
+                        onClick={() => history.push({ pathname: `/lessons/${lesson.title}`, search: `?id=${lesson.id}` })}>Przejdź do lekcji</Button>
+                </Rectangle.Header>
+            </Rectangle>
         ));
     }
    
     return(
-        <Container>
+        <AppContainer>
             <HeaderSection><i className="fa fa-book" aria-hidden="true"></i>Lekcje</HeaderSection>
             {lessonList}
-        </Container>   
+        </AppContainer>   
     );
 }
 

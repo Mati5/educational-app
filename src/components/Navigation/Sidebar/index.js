@@ -1,48 +1,49 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
 
-import { SidebarLayout } from './SidebarLayout';
+import styled from 'styled-components'
+
+import { em } from '../../../helpers/heleprs';
 import { List, ListElement, ListLink } from './List';
-import { getLessons, clearLessons } from '../../../store/Lessons/actions';
 
-const Sidebar = ({getLessons, clearLessons, loading, lessons, sidebarOpened}) => {
-    useEffect(() => {
-        getLessons();
+const Sidebar = styled.nav`
+  width: 100%;
+  height: 100%;
+  background-color: #e4e5e5;
+  overflow-y: scroll;
+  opacity: 1;
+  padding: ${em(20)} ${em(20)} ${em(100)};
+  box-sizing: border-box;
+  position: fixed;
+  top: ${em(70)};
+  left: 0;
+  z-index: 1;
+  transition: 0.5s ease-in-out;
+  display: ${props => props.opened ? "block" : "none" };
 
-        return () => {
-            clearLessons();
-        }
-    }, [getLessons, clearLessons]);
+  @media(min-width: 768px) {
+    width: 35%
+  }
 
-    let lessonList = <p>Loading...</p>;
+  @media(min-width: 1192px) {
+    width: ${em(400)};
+  }
 
-    if(!loading) {
-        lessonList = lessons.map((lesson, index) => (
-            <ListElement key={lesson.id}>
-                <ListLink to={{ pathname: `/lessons/${lesson.title}`, search: `?id=${lesson.id}` }}>{index+1}. {lesson.title}</ListLink>
-            </ListElement>
-        ));
-    }
+  ::-webkit-scrollbar {
+    width: ${em(8)};
+  }
 
-    return (
-        <React.Fragment>
-            <SidebarLayout opened={sidebarOpened}>
-                <List>
-                    {lessonList}
-                </List>
-            </SidebarLayout>
-        </React.Fragment>
-    );
-}
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  }
 
-const mapStateToProps = state => ({
-    lessons: state.lessons.lessonList,
-    loading: state.lessons.loading
-});
+  ::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+  }
+`;
 
-const mapDispatchToProps = {
-    getLessons,
-    clearLessons
-}
+Sidebar.List = List;
+Sidebar.Link = ListLink;
+Sidebar.Element = ListElement;
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export { Sidebar };

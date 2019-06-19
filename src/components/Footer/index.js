@@ -1,14 +1,14 @@
-import React from 'react';
+import styled from 'styled-components';
 
-import { FooterLayout } from './FooterLayout';
-import { Container } from '../Container/Container'; 
+import { em } from '../../helpers/heleprs';
 
-const Footer = () => (
-    <FooterLayout>
-        <Container>
-            2019 © Wszelkie prawa zastrzeżone.
-        </Container>
-    </FooterLayout>
-);
+const Footer = styled.footer`
+    background-color: #f0f0f0;
+    color: #b0b0b0;
+    font-size: ${em(15)};
+    width: 100%;
+    padding: ${em(40)} 0;
+    margin-top: ${em(50)};
+`;
 
-export default Footer;
+export { Footer };

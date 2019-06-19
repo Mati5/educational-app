@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+import LinearProgress from '@material-ui/core/LinearProgress';
+
 import { getSingleLesson, setSelectedLesson } from '../../store/Lessons/actions';
-import Sidebar from '../../components/Navigation/Sidebar/index';
-import { SingleLessonLayout } from '../../components/SingleLesson/SingleLessonLayout';
+import LessonList from './LessonList';
+import { Lesson } from '../../components/Lesson/index';
 import { ToggleButton } from '../../components/Navigation/ToggleButton/index';
 
 const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, location}) => {
@@ -35,12 +39,18 @@ const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, locat
         }
     }, []);
 
-    let lesson = <p>Loading...</p>;
+    let lesson = <LinearProgress />;
     if(selectedLesson) {
         lesson = ( 
             <React.Fragment>
-                <h2>{selectedLesson.title}</h2>
-                <p>{selectedLesson.content}</p>
+                <Lesson.Header>
+                    <Lesson.Title>{selectedLesson.title}</Lesson.Title>
+                    <Lesson.Details>
+                        <FontAwesomeIcon icon={faCalendarAlt} />
+                        <Lesson.Details.Date>19.06.2019</Lesson.Details.Date>
+                    </Lesson.Details>
+                </Lesson.Header>
+                <Lesson.Content dangerouslySetInnerHTML={{__html: selectedLesson.content}} />
             </React.Fragment>
         );
     }
@@ -53,10 +63,10 @@ const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, locat
                 <ToggleButton 
                     sidebarOpened={showSidebar}
                     onClick={() => setSidebarOpened(!showSidebar)}>{toggleButtonContent}</ToggleButton>
-                <Sidebar sidebarOpened={showSidebar} />
-                <SingleLessonLayout sidebarOpened={showSidebar}>
+                <LessonList sidebarOpened={showSidebar} />
+                <Lesson sidebarOpened={showSidebar}>
                     {lesson}
-                </SingleLessonLayout>
+                </Lesson>
             </React.Fragment>
         </div>
     );
