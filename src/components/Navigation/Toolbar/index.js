@@ -1,37 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-import { ToolbarLayout, ToolbarContainer } from './ToolbarLayout';
-import { Logo } from '../../Logo/Logo';
-import { List, ListElement, ListLink } from './List';
- 
-const Toolbar = () => {
-    return (
-        <ToolbarLayout>
-<<<<<<< HEAD
-            <ToolbarContainer>
-=======
-            <ToolbarContainer as="nav">
->>>>>>> dev
-            <Link to="/">
-                <Logo>
-                    <i className="fa fa-code" aria-hidden="true"></i>
-                </Logo>
-            </Link>
-                <List>
-                    <ListElement>
-                        <ListLink to="/">Strona główna</ListLink>
-                    </ListElement>
-                    {/* <ListElement>
-                        <ListLink to="/news">Aktualności</ListLink>
-                    </ListElement> */}
-                    <ListElement>
-                        <ListLink to="/lessons">Lekcje</ListLink>
-                    </ListElement>
-                </List>
-            </ToolbarContainer>
-        </ToolbarLayout>
-    );
-}
+import { em } from '../.././../helpers/heleprs';
+import { Container } from './Container';
+import { List, ListLink, ListElement } from './List';
 
-export default Toolbar;
+const Toolbar = styled.header`
+    background-color: #00405d;
+    width: 100%;
+    min-height: ${em(72)};
+    display: flex;
+    justify-content: space-between;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+`;
+
+Toolbar.Container = Container;
+Toolbar.List = List;
+Toolbar.Link = ListLink;
+Toolbar.Element = ListElement;
+
+
+export { Toolbar };

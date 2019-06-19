@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import { getSingleLesson, setSelectedLesson } from '../../store/Lessons/actions';
-import Sidebar from '../../components/Navigation/Sidebar/index';
-import { SingleLessonLayout } from '../../components/SingleLesson/SingleLessonLayout';
+import LessonList from './LessonList';
+import { Lesson } from '../../components/Lesson/index';
 import { ToggleButton } from '../../components/Navigation/ToggleButton/index';
 
 const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, location}) => {
@@ -39,8 +39,8 @@ const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, locat
     if(selectedLesson) {
         lesson = ( 
             <React.Fragment>
-                <h2>{selectedLesson.title}</h2>
-                <p>{selectedLesson.content}</p>
+                <h1>{selectedLesson.title}</h1>
+                <div dangerouslySetInnerHTML={{__html: selectedLesson.content}} />
             </React.Fragment>
         );
     }
@@ -53,10 +53,10 @@ const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, locat
                 <ToggleButton 
                     sidebarOpened={showSidebar}
                     onClick={() => setSidebarOpened(!showSidebar)}>{toggleButtonContent}</ToggleButton>
-                <Sidebar sidebarOpened={showSidebar} />
-                <SingleLessonLayout sidebarOpened={showSidebar}>
+                <LessonList sidebarOpened={showSidebar} />
+                <Lesson sidebarOpened={showSidebar}>
                     {lesson}
-                </SingleLessonLayout>
+                </Lesson>
             </React.Fragment>
         </div>
     );

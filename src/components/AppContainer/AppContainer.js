@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { em } from '../../helpers/heleprs';
 
-const Container = styled.div`
+const AppContainer = styled.div`
     padding: ${em(1)} ${em(15)};
     margin: 0 auto;
 
@@ -19,4 +19,4 @@ const Container = styled.div`
     }
 `;
 
-export { Container };
+export { AppContainer };

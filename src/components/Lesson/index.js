@@ -1,29 +1,18 @@
-import React from 'react';
-import history from '../../history';
+import styled from 'styled-components';
 
-import { LessonLayout } from './LessonLayout';
-import { Icon } from './Icon';
-import { Header } from './Header';
-import { Button } from '../../components/UI/Button/Button';
-import { H3 } from '../Headers';
-import { LessonLink } from './Link';
+import { em } from '../../helpers/heleprs';
 
-const Lesson = (props) => {
-    return(
-        <LessonLayout>
-            <Icon>
-                <i className="fa fa-folder-open-o" aria-hidden="true"></i>
-            </Icon>
-            <Header>
-                <H3 width="70%">
-                    <LessonLink to={{ pathname: `/lessons/${props.title}`, search: `?id=${props.id}` }}>{props.title}</LessonLink>
-                </H3>
-                <Button 
-                    buttonColor="#07a9e4"
-                    onClick={() => history.push({ pathname: `/lessons/${props.title}`, search: `?id=${props.id}` })}>Przejdź do lekcji</Button>
-            </Header>
-        </LessonLayout>
-    );
-}
+const Lesson = styled.div`
+    width: ${props => props.sidebarOpened ? "65%" : "80%"};
+    float: ${props => props.sidebarOpened ? "right" : "none"};
+    padding: ${em(20)};
+    margin: 0 auto;
 
-export default Lesson;
+    @media(min-width: 1192px) {
+        width: auto;
+        float: none;
+        margin-left: ${props => props.sidebarOpened ? em(400) : em(80)};
+    }
+`;
+
+export { Lesson };
