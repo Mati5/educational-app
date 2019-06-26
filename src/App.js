@@ -12,11 +12,7 @@ const App = () => {
   const routes = (
     <Switch>
       <Route path="/lessons/:name" component={SingleLesson} />
-<<<<<<< HEAD
-      <Route path="/lessons"  component={Lessons} />
-=======
       <Route path="/lessons" component={Lessons} />
->>>>>>> dev
       <Route path="/news" component={News} />
       <Route path="/" exact component={Home} />
     </Switch>

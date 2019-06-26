@@ -11,8 +11,4 @@ const Header = styled.header`
     padding: ${em(20)};
 `;
 
-<<<<<<< HEAD
 export { Header };  
-=======
-export { Header };  
->>>>>>> dev
