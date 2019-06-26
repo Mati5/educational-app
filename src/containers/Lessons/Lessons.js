@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import history from '../../history';
 import { getLessons, clearLessons } from '../../store/Lessons/actions';
-
+import Pagination from '../../components/Navigation/Pagination/Pagination';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFolderOpen } from '@fortawesome/free-solid-svg-icons'
@@ -13,7 +13,12 @@ import { AppContainer } from '../../components/AppContainer/AppContainer';
 import { HeaderSection } from '../../components/Headers/HeaderSection';
 import { Rectangle } from '../../components/Rectangle/index';
 
-const Lessons = ({getLessons, clearLessons, loading, lessons}) => {
+const Lessons = ({getLessons, clearLessons, loading, lessons, location}) => {
+    const [postsPerPage] = useState(10);
+    const [currentPage, setCurrentPage] = useState(1);
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+
     useEffect(() => {
         getLessons();
 
@@ -22,10 +27,25 @@ const Lessons = ({getLessons, clearLessons, loading, lessons}) => {
         }
     }, [getLessons, clearLessons]);
 
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        if(params.get('page') && params.get('page')<lessons.length) {
+            setCurrentPage(params.get('page'));
+        }
+        else {
+            setCurrentPage(1)
+            history.push({ pathname: `/lessons`, search: `?page=1` });
+        }   
+        
+    }, [location]);
+
+    const onPageChanged = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }
+
     let lessonList = <CircularProgress />
     if(!loading) {
-        lessonList = lessons.map(lesson => (
-            // <Lesson key={lesson.id} title={lesson.title} content={lesson.content} id={lesson.id} />
+        lessonList = lessons.slice(indexOfFirstPost, indexOfLastPost).map(lesson => (
             <Rectangle key={lesson.id}>
                 <Rectangle.Icon>
                     <FontAwesomeIcon icon={faFolderOpen} />
@@ -46,6 +66,10 @@ const Lessons = ({getLessons, clearLessons, loading, lessons}) => {
         <AppContainer>
             <HeaderSection><i className="fa fa-book" aria-hidden="true"></i>Lekcje</HeaderSection>
             {lessonList}
+            <Pagination postsPerPage={postsPerPage} 
+                        totalPosts={lessons.length} 
+                        currentPage={parseInt(currentPage)}
+                        onPageChanged={onPageChanged} />
         </AppContainer>   
     );
 }

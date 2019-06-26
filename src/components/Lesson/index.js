@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { em } from '../../helpers/heleprs';
 import { H1 } from './H1';
+import { H2 } from './H2';
 import { Header } from './Header';
 import { Details } from './Details';
 import { Content } from './Content';
@@ -23,6 +24,7 @@ const Lesson = styled.article`
 `;
 
 Lesson.Title = H1;
+Lesson.H2 = H2;
 Lesson.Header = Header;
 Lesson.Details = Details;
 Lesson.Content = Content;
