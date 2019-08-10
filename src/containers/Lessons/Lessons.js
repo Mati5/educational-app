@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 
 import history from '../../history';
 import { getLessons, clearLessons } from '../../store/Lessons/actions';
-import Pagination from '../../components/Navigation/Pagination/Pagination';
+import Pagination from '../../components/Navigation/Pagination/index';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFolderOpen } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 import { Button } from '../../components/UI/Button/Button';
 import { H3 } from '../../components/Headers/index';
 import { AppContainer } from '../../components/AppContainer/AppContainer';
@@ -37,7 +37,7 @@ const Lessons = ({getLessons, clearLessons, loading, lessons, location}) => {
             history.push({ pathname: `/lessons`, search: `?page=1` });
         }   
         
-    }, [location]);
+    }, [location, lessons]);
 
     const onPageChanged = (pageNumber) => {
         setCurrentPage(pageNumber);

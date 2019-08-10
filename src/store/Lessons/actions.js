@@ -18,14 +18,9 @@ export const clearLessons = () => ({
 export const getLessons = () => dispatch => {
     dispatch(getLessonsAction());
 
-    axios.get('https://educational-app-d2b14.firebaseio.com/lessons.json')
+    axios.get('/api/lessons')
         .then(response => {
-            let cityList = [];
-            for(let key in response.data) {
-                response.data[key].id = key;
-                cityList.push(response.data[key]);
-            }
-            
+            let cityList = response.data;
             dispatch(getLessonsSuccess(cityList));
         })
         .catch(error => {
@@ -39,7 +34,8 @@ export const setSelectedLesson = (selectedLesson) => ({
 });
 
 export const getSingleLesson = (id) => (dispatch) => {
-    axios.get(`https://educational-app-d2b14.firebaseio.com/lessons/${id}.json`)
+    const lessonId = parseInt(id);
+    axios.get(`/api/lesson?id=${lessonId}`)
         .then(response => {
             dispatch(setSelectedLesson(response.data));
         })

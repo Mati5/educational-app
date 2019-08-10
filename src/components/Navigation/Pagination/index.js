@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Link }  from 'react-router-dom';
 import styled from 'styled-components';
 import history from '../../../history';
@@ -129,4 +129,4 @@ const Pagination = ({ postsPerPage, totalPosts, currentPage, onPageChanged }) =>
     )
 }
 
-export default Pagination
+export default Pagination;
