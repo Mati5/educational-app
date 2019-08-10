@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import Moment from 'react-moment';
+import { DATE_FORMAT } from '../../shared/config';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarAlt, faPaperclip } from '@fortawesome/free-solid-svg-icons'
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 import { getSingleLesson, setSelectedLesson } from '../../store/Lessons/actions';
 import LessonList from './LessonList';
 import { Lesson } from '../../components/Lesson/index';
 import { ToggleButton } from '../../components/Navigation/ToggleButton/index';
+import { Attachment } from '../../components/Attachment/index';
+
 
 const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, location}) => {
     let [showSidebar, setSidebarOpened] = useState(true);
@@ -47,10 +51,35 @@ const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, locat
                     <Lesson.Title>{selectedLesson.title}</Lesson.Title>
                     <Lesson.Details>
                         <FontAwesomeIcon icon={faCalendarAlt} />
-                        <Lesson.Details.Date>19.06.2019</Lesson.Details.Date>
+                        <Lesson.Details.Date>
+                            <Moment date={selectedLesson.date} 
+                                    format={DATE_FORMAT} />
+                        </Lesson.Details.Date>
                     </Lesson.Details>
                 </Lesson.Header>
                 <Lesson.Content dangerouslySetInnerHTML={{__html: selectedLesson.content}} />
+                <Attachment>
+                    <Attachment.Header>
+                        <Attachment.Header.Icon>
+                            <FontAwesomeIcon icon={faPaperclip} />
+                        </Attachment.Header.Icon>
+                        Załączniki
+                    </Attachment.Header>
+                    <Attachment.List>
+                        <Attachment.Element>
+                            <Attachment.Element.Link href="#">Podstawy HTML i CSS</Attachment.Element.Link>
+                        </Attachment.Element>
+                        <Attachment.Element>
+                            <Attachment.Element.Link href="#">Struktura pliku HTML</Attachment.Element.Link>
+                        </Attachment.Element>
+                        <Attachment.Element>
+                            <Attachment.Element.Link href="#">Struktura pliku CSS</Attachment.Element.Link>
+                        </Attachment.Element>
+                        <Attachment.Element>
+                            <Attachment.Element.Link href="#">Selektory</Attachment.Element.Link>
+                        </Attachment.Element>
+                    </Attachment.List>
+                </Attachment>
             </React.Fragment>
         );
     }
