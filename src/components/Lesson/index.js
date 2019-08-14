@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { em } from '../../helpers/heleprs';
+import { rem } from '../../helpers/heleprs';
 import { H1 } from './H1';
 import { H2 } from './H2';
 import { Header } from './Header';
@@ -10,16 +10,16 @@ import { Content } from './Content';
 const Lesson = styled.article`
     width: ${props => props.sidebarOpened ? "65%" : "80%"};
     float: ${props => props.sidebarOpened ? "right" : "none"};
-    font-size: ${em(14)};
-    line-height: ${em(25)};
-    /* padding: ${em(20)}; */
+    font-size: ${rem(14)};
+    line-height: ${rem(25)};
+    /* padding: ${rem(20)}; */
     margin: 0 auto;
     position: relative;
 
     @media(min-width: 1192px) {
         width: auto;
         float: none;
-        margin-left: ${props => props.sidebarOpened ? em(458) : em(80)};
+        margin-left: ${props => props.sidebarOpened ? rem(400) : rem(50)};
     }
 `;
 

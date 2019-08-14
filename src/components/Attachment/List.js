@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-import { em } from '../../helpers/heleprs';
+import { rem } from '../../helpers/heleprs';
 
 const List = styled.ul`
-   /* list-style: none;
+   list-style: none;
    margin: 0;
-   padding: 0; */
-   /* padding: ${em(15)}; */
+   padding: 0;
+   padding: ${rem(15)};
 `;
 
 export { List };

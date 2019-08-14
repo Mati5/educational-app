@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
-import { em } from '../../helpers/heleprs';
+import { rem } from '../../helpers/heleprs';
 
 const Icon = styled.div`
     background-color: #00405d;
-    width: ${em(45)};
-    height: ${em(45)};
+    width: ${rem(45)};
+    height: ${rem(45)};
     color: #fff;
-    font-size: ${em(16)};
+    font-size: ${rem(16)};
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: ${em(8)}; 
+    margin-right: ${rem(8)}; 
 `;
 
 export { Icon };

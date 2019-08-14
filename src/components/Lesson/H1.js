@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-import { em } from '../../helpers/heleprs';
+import { rem } from '../../helpers/heleprs';
 
 const H1 = styled.h1`
     color: #222;
-    font-size: ${em(24)};
+    font-size: ${rem(24)};
     margin: 0;
 `;
 

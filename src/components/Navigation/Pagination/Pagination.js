@@ -3,13 +3,13 @@ import { Link }  from 'react-router-dom';
 import styled from 'styled-components';
 import history from '../../../history';
 
-import { em } from '../../../helpers/heleprs';
+import { rem } from '../../../helpers/heleprs';
 
 const Pagination = ({ postsPerPage, totalPosts, currentPage, onPageChanged }) => {
     const Pagination = styled.nav`
         display: flex;
         justify-content: flex-end;
-        margin: ${em(35)} 0;
+        margin: ${rem(35)} 0;
     `;
 
     const List = styled.ul`
@@ -32,9 +32,9 @@ const Pagination = ({ postsPerPage, totalPosts, currentPage, onPageChanged }) =>
     const ListLink = styled(Link)`
         background-color: ${props => props.active ? '#00405d' : 'transparent'};
         color: ${props => props.active ? '#fff' : '#616161'};
-        font-size: ${em(12)};
+        font-size: ${rem(12)};
         border: 0;
-        padding: ${em(15)} ${em(20)};
+        padding: ${rem(15)} ${rem(20)};
         display: block;
 
         cursor: pointer;
@@ -48,8 +48,8 @@ const Pagination = ({ postsPerPage, totalPosts, currentPage, onPageChanged }) =>
 
     const Dots = styled(Element)`
         align-self: flex-end;
-        padding: 0 ${em(20)};
-        padding-top: ${em(15)};
+        padding: 0 ${rem(20)};
+        padding-top: ${rem(15)};
     `;
 
     Pagination.List = List;
@@ -85,12 +85,12 @@ const Pagination = ({ postsPerPage, totalPosts, currentPage, onPageChanged }) =>
         l = i;
     }
 
-    const handleMoveRight = () => {
+    const handlemoveRight = () => {
         const nextPage = currentPage + 1;
         history.push({ pathname: `/lessons`, search: `?page=${nextPage}` });
     }
 
-    const handleMoveLeft = () => {
+    const handlemoveLeft = () => {
         const nextPage = currentPage - 1;
         history.push({ pathname: `/lessons`, search: `?page=${nextPage}` });
     }
@@ -102,7 +102,7 @@ const Pagination = ({ postsPerPage, totalPosts, currentPage, onPageChanged }) =>
                      <Pagination.Link
                         type="button"
                         as="button" 
-                        onClick={() => handleMoveLeft()}
+                        onClick={() => handlemoveLeft()}
                         disabled={currentPage<=1}>Poprzednia</Pagination.Link>
                 </Pagination.Element>
                 {rangeWithDots.map((number, index) => (
@@ -121,7 +121,7 @@ const Pagination = ({ postsPerPage, totalPosts, currentPage, onPageChanged }) =>
                      <Pagination.Link
                         type="button"
                         as="button" 
-                        onClick={() => handleMoveRight()}
+                        onClick={() => handlemoveRight()}
                         disabled={(currentPage >= Math.ceil(totalPosts/postsPerPage))}>Następna</Pagination.Link>
                 </Pagination.Element>
             </Pagination.List>

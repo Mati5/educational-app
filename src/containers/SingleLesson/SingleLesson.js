@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt, faPaperclip } from '@fortawesome/free-solid-svg-icons'
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-import { getSingleLesson, setSelectedLesson } from '../../store/Lessons/actions';
+import { getSingleLesson, setSelectedLesson, getFile } from '../../store/Lessons/actions';
 import LessonList from './LessonList';
 import { Lesson } from '../../components/Lesson/index';
 import { ToggleButton } from '../../components/Navigation/ToggleButton/index';
@@ -43,6 +43,10 @@ const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, locat
         }
     }, []);
 
+    const getFileHandler = (fileId, fileName) => {
+        getFile(fileId, fileName);
+    }
+
     let lesson = <LinearProgress />;
     if(selectedLesson) {
         lesson = ( 
@@ -58,7 +62,7 @@ const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, locat
                     </Lesson.Details>
                 </Lesson.Header>
                 <Lesson.Content dangerouslySetInnerHTML={{__html: selectedLesson.content}} />
-                <Attachment>
+                {selectedLesson.attachments.length > 0 ? <Attachment>
                     <Attachment.Header>
                         <Attachment.Header.Icon>
                             <FontAwesomeIcon icon={faPaperclip} />
@@ -66,20 +70,18 @@ const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, locat
                         Załączniki
                     </Attachment.Header>
                     <Attachment.List>
+                        {selectedLesson.attachments.map(attach => (
+                            <Attachment.Element key={attach.id}>
+                                <Attachment.Element.Link onClick={() => getFileHandler(attach.id, attach.fileName)}>
+                                    {attach.fileName} - ({attach.size})
+                                </Attachment.Element.Link>
+                            </Attachment.Element>
+                        ))}
                         <Attachment.Element>
-                            <Attachment.Element.Link href="#">Podstawy HTML i CSS</Attachment.Element.Link>
-                        </Attachment.Element>
-                        <Attachment.Element>
-                            <Attachment.Element.Link href="#">Struktura pliku HTML</Attachment.Element.Link>
-                        </Attachment.Element>
-                        <Attachment.Element>
-                            <Attachment.Element.Link href="#">Struktura pliku CSS</Attachment.Element.Link>
-                        </Attachment.Element>
-                        <Attachment.Element>
-                            <Attachment.Element.Link href="#">Selektory</Attachment.Element.Link>
+                            <Attachment.Element.Link as="a" href="http://localhost:8080/api/downloadFile/Styled%20components.docx" download>refds</Attachment.Element.Link>
                         </Attachment.Element>
                     </Attachment.List>
-                </Attachment>
+                </Attachment> : null }
             </React.Fragment>
         );
     }

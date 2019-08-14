@@ -1,7 +1,7 @@
 
 import styled from 'styled-components'
 
-import { em } from '../../../helpers/heleprs';
+import { rem } from '../../../helpers/heleprs';
 import { List, ListElement, ListLink } from './List';
 
 const Sidebar = styled.nav`
@@ -10,10 +10,10 @@ const Sidebar = styled.nav`
   background-color: #e4e5e5;
   overflow-y: scroll;
   opacity: 1;
-  padding: ${em(20)} ${em(20)} ${em(100)};
+  padding: ${rem(20)} ${rem(20)} ${rem(100)};
   box-sizing: border-box;
   position: fixed;
-  top: ${em(70)};
+  top: ${rem(70)};
   left: 0;
   z-index: 1;
   transition: 0.5s ease-in-out;
@@ -24,11 +24,11 @@ const Sidebar = styled.nav`
   }
 
   @media(min-width: 1192px) {
-    width: ${em(400)};
+    width: ${rem(400)};
   }
 
   ::-webkit-scrollbar {
-    width: ${em(8)};
+    width: ${rem(8)};
   }
 
   ::-webkit-scrollbar-track {

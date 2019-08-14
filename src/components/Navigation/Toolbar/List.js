@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link }  from 'react-router-dom';
 
-import { em } from '../../../helpers/heleprs';
+import { rem } from '../../../helpers/heleprs';
 
 const List = styled.ul`
     list-style: none;
@@ -16,13 +16,13 @@ const ListLink = styled(Link)`
     height: 100%;
     color: #fff;
     text-decoration: none;
-    padding: 0 ${em(20)};
+    padding: 0 ${rem(20)};
     display: flex;
     align-items: center;
 `;
 
 const ListElement = styled.li`
-    margin-left: ${em(-4)};
+    margin-left: ${rem(-4)};
     position: relative;
     transition: background 0.35s ease; 
 

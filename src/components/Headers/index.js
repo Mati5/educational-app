@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-import { em } from '../../helpers/heleprs';
+import { rem } from '../../helpers/heleprs';
 
 const H1 = styled.h1`
     color: #fff;
-    font-size: ${em(30)};
+    font-size: ${rem(30)};
     font-family: 'Dosis', sans-serif;
     text-transform: uppercase;
     text-align: center;
@@ -17,8 +17,8 @@ const H2 = styled.h2`
     text-transform: uppercase;
     font-family: 'Dosis';
     color: #333;
-    font-size: ${em(25)};
-    padding: ${em(20)} 0;
+    font-size: ${rem(25)};
+    padding: ${rem(20)} 0;
     transition: 0.35s color linear;
 `;
 
@@ -28,7 +28,7 @@ const H3 = styled.h3`
     text-transform: uppercase;
     font-family: 'Dosis';
     color: #333;
-    font-size: ${em(20)};
+    font-size: ${rem(20)};
     transition: 0.35s color linear;
 `;
 

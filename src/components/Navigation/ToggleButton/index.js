@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
-import { em } from '../../../helpers/heleprs';
+import { rem } from '../../../helpers/heleprs';
 
 const ToggleButton = styled.button`
     background-color: ${props => props.sidebarOpened ? "transparent" : "#29303b"};
-    width: ${em(40)};
-    height: ${em(40)};
+    width: ${rem(45)};
+    height: ${rem(45)};
     color: ${props => props.sidebarOpened ? "#222" : "#fff"};
-    font-size: ${em(20)};
+    font-size: ${rem(20)};
     border: 0;
 
     position: fixed;
-    top: ${em(70)};
+    top: ${rem(90)};
     left: 0;
     z-index: 999;
     transition: 0.2s ease-in-out;

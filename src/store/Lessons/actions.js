@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { saveAs } from 'file-saver';
 
 import * as actionTypes from './actionTypes';
 
@@ -41,5 +42,12 @@ export const getSingleLesson = (id) => (dispatch) => {
         })
         .catch(error => {
             console.log(error);
+        })
+};
+
+export const getFile = (fileId, fileName) =>  {
+    axios.get(`/api/downloadFile/${fileId}`, { responseType:"blob" })
+        .then(response => {
+            saveAs(response.data, fileName);
         })
 };
