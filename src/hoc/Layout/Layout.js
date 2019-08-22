@@ -8,7 +8,9 @@ import { Footer } from '../../components/Footer/index';
 import { AppContainer } from '../../components/AppContainer/AppContainer';
 
 const Main = styled.main`
-    margin-top: 72px;
+    width: 100%;
+    height: calc(100% - 50px);
+    padding-top: 72px;
 `;
 
 const Layout = ({children}) => {
@@ -55,13 +57,16 @@ const Layout = ({children}) => {
                     <Toolbar.Element>
                         <Toolbar.Link to="/lessons">Lekcje</Toolbar.Link>
                     </Toolbar.Element>
+                    <Toolbar.Element>
+                        <Toolbar.Link to="/chat">Chat</Toolbar.Link>
+                    </Toolbar.Element>
                 </Toolbar.List>
                 </Toolbar.Container>
             </Toolbar>
             <Main>
                 {children}
             </Main>
-            {footer}
+            {/* {footer} */}
         </React.Fragment>
     );
 }
