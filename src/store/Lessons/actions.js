@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { saveAs } from 'file-saver';
 
 import * as actionTypes from './actionTypes';
+import * as api from './api';
 
 export const getLessonsAction = () => ({
     type: actionTypes.GET_LESSONS
@@ -19,7 +19,7 @@ export const clearLessons = () => ({
 export const getLessons = () => dispatch => {
     dispatch(getLessonsAction());
 
-    axios.get('/api/lessons')
+    api.fetchLessons()
         .then(response => {
             let cityList = response.data;
             dispatch(getLessonsSuccess(cityList));
@@ -36,7 +36,7 @@ export const setSelectedLesson = (selectedLesson) => ({
 
 export const getSingleLesson = (id) => (dispatch) => {
     const lessonId = parseInt(id);
-    axios.get(`/api/lesson?id=${lessonId}`)
+    api.fetchSingleLesson(lessonId)
         .then(response => {
             dispatch(setSelectedLesson(response.data));
         })
@@ -46,7 +46,7 @@ export const getSingleLesson = (id) => (dispatch) => {
 };
 
 export const getFile = (fileId, fileName) =>  {
-    axios.get(`/api/downloadFile/${fileId}`, { responseType:"blob" })
+    api.downloadFile(fileId)
         .then(response => {
             saveAs(response.data, fileName);
         })

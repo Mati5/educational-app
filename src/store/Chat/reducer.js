@@ -2,7 +2,6 @@ import * as actionTypes from './actionTypes';
 
 const initialState = {
     messageList: [],
-    userList: [],
     loading: false
 }
 
@@ -29,15 +28,6 @@ const chatReducer = (state = initialState, action) => {
                 ...state,
                 messageList: [...state.messageList, action.payload],
                 loading: false
-            }
-        case actionTypes.GET_USERS_SUCCESS:
-            return {
-                ...state,
-                userList: action.payload
-            }
-        case actionTypes.CLEAR_USERS:
-            return {
-                initialState
             }
         default:
             return state

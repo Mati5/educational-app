@@ -1,25 +1,29 @@
-import styled from 'styled-components';
+import React from 'react';
+import { RectangleStyle } from './style';
+import { Button } from '../../components/UI/Button/Button';
+import { H3 } from '../../components/Headers/index';
 
-import { rem } from '../../helpers/heleprs';
+import history from '../../history';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 
-import { Header } from './Header';
-import { Icon } from './Icon';
-import { LessonLink } from './Link';
+const Rectangle = ({post}) => {
 
-const Rectangle = styled.div`
-    width: 100%;
-    min-height: ${rem(150)};
-    background-color: #fff;
-    border: ${rem(1)} solid #ccc;
-    border-radius: ${rem(8)};
-    box-shadow: 0 0 ${rem(15)} #ccc;
-    padding-right: ${rem(20)};
-    margin-bottom: ${rem(20)};
-    display: flex;
-`;
+    return (
+        <RectangleStyle key={post.id}>
+            <RectangleStyle.Icon>
+                <FontAwesomeIcon icon={faFolderOpen} />
+            </RectangleStyle.Icon>
+            <RectangleStyle.Header>
+                <H3 width="70%">
+                    <RectangleStyle.Link to={{ pathname: `/lessons/${post.title}`, search: `?id=${post.id}` }}>{post.title}</RectangleStyle.Link>
+                </H3>
+                <Button 
+                    buttonColor="#07a9e4"
+                    onClick={() => history.push({ pathname: `/lessons/${post.title}`, search: `?id=${post.id}` })}>Przejdź do lekcji</Button>
+            </RectangleStyle.Header>
+        </RectangleStyle>
+    );
+}
 
-Rectangle.Header = Header;
-Rectangle.Icon = Icon;
-Rectangle.Link = LessonLink;
-
-export { Rectangle };
+export default Rectangle;

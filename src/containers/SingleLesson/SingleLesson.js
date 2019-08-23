@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import Moment from 'react-moment';
-import { DATE_FORMAT } from '../../shared/config';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarAlt, faPaperclip } from '@fortawesome/free-solid-svg-icons'
-import LinearProgress from '@material-ui/core/LinearProgress';
-
-import { getSingleLesson, setSelectedLesson, getFile } from '../../store/Lessons/actions';
 import LessonList from './LessonList';
-import { Lesson } from '../../components/Lesson/index';
-import { ToggleButton } from '../../components/Navigation/ToggleButton/index';
-import { Attachment } from '../../components/Attachment/index';
-
+import Lesson  from '../../components/Lesson/index';
+import Attachment from '../../components/Attachment/index';
+import { getSingleLesson, setSelectedLesson, getFile } from '../../store/Lessons/actions';
+import { ToggleButton } from '../../components/Navigation/ToggleButton/style';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, location}) => {
     let [showSidebar, setSidebarOpened] = useState(true);
@@ -51,37 +45,9 @@ const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, locat
     if(selectedLesson) {
         lesson = ( 
             <React.Fragment>
-                <Lesson.Header>
-                    <Lesson.Title>{selectedLesson.title}</Lesson.Title>
-                    <Lesson.Details>
-                        <FontAwesomeIcon icon={faCalendarAlt} />
-                        <Lesson.Details.Date>
-                            <Moment date={selectedLesson.date} 
-                                    format={DATE_FORMAT} />
-                        </Lesson.Details.Date>
-                    </Lesson.Details>
-                </Lesson.Header>
-                <Lesson.Content dangerouslySetInnerHTML={{__html: selectedLesson.content}} />
-                {selectedLesson.attachments.length > 0 ? <Attachment>
-                    <Attachment.Header>
-                        <Attachment.Header.Icon>
-                            <FontAwesomeIcon icon={faPaperclip} />
-                        </Attachment.Header.Icon>
-                        Załączniki
-                    </Attachment.Header>
-                    <Attachment.List>
-                        {selectedLesson.attachments.map(attach => (
-                            <Attachment.Element key={attach.id}>
-                                <Attachment.Element.Link onClick={() => getFileHandler(attach.id, attach.fileName)}>
-                                    {attach.fileName} - ({attach.size})
-                                </Attachment.Element.Link>
-                            </Attachment.Element>
-                        ))}
-                        <Attachment.Element>
-                            <Attachment.Element.Link as="a" href="http://localhost:8080/api/downloadFile/Styled%20components.docx" download>refds</Attachment.Element.Link>
-                        </Attachment.Element>
-                    </Attachment.List>
-                </Attachment> : null }
+                <Lesson sidebarOpened={showSidebar} post={selectedLesson}>
+                    {selectedLesson.attachments.length > 0 ? <Attachment files={selectedLesson.attachments} downloadFile={getFileHandler} /> : null}
+                </Lesson>
             </React.Fragment>
         );
     }
@@ -95,9 +61,7 @@ const SingleLesson = ({getSingleLesson, setSelectedLesson, selectedLesson, locat
                     sidebarOpened={showSidebar}
                     onClick={() => setSidebarOpened(!showSidebar)}>{toggleButtonContent}</ToggleButton>
                 <LessonList sidebarOpened={showSidebar} />
-                <Lesson sidebarOpened={showSidebar}>
-                    {lesson}
-                </Lesson>
+                {lesson}
             </React.Fragment>
         </div>
     );

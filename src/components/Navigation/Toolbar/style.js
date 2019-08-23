@@ -1,7 +1,21 @@
 import styled from 'styled-components';
-import { Link }  from 'react-router-dom';
 
-import { rem } from '../../../helpers/heleprs';
+import { rem } from '../.././../helpers/heleprs';
+import { Container } from './Container';
+import { Link } from 'react-router-dom';
+
+const ToolbarStyle = styled.header`
+    background-color: #00405d;
+    width: 100%;
+    min-height: ${rem(72)};
+    display: flex;
+    justify-content: space-between;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+`;
 
 const List = styled.ul`
     list-style: none;
@@ -35,8 +49,10 @@ const ListElement = styled.li`
     }
 `;
 
-export {
-    List,
-    ListElement,
-    ListLink
-}
+ToolbarStyle.Container = Container;
+ToolbarStyle.List = List;
+ToolbarStyle.Link = ListLink;
+ToolbarStyle.Element = ListElement;
+
+
+export { ToolbarStyle };

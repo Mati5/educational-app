@@ -1,26 +1,31 @@
-import styled from 'styled-components';
+import React from 'react';
+import { ToolbarStyle } from './style';
+import { Logo } from '../../Logo/index';
 
-import { rem } from '../.././../helpers/heleprs';
-import { Container } from './Container';
-import { List, ListLink, ListElement } from './List';
+const Toolbar = () => {
 
-const Toolbar = styled.header`
-    background-color: #00405d;
-    width: 100%;
-    min-height: ${rem(72)};
-    display: flex;
-    justify-content: space-between;
+    return (
+        <ToolbarStyle>
+            <ToolbarStyle.Container as="nav">
+            <ToolbarStyle.Link to="/">
+                <Logo>
+                    <i className="fa fa-code" aria-hidden="true"></i>
+                </Logo>
+            </ToolbarStyle.Link>
+            <ToolbarStyle.List>
+                <ToolbarStyle.Element>
+                    <ToolbarStyle.Link to="/">Strona główna</ToolbarStyle.Link>
+                </ToolbarStyle.Element>
+                <ToolbarStyle.Element>
+                    <ToolbarStyle.Link to="/lessons">Lekcje</ToolbarStyle.Link>
+                </ToolbarStyle.Element>
+                <ToolbarStyle.Element>
+                    <ToolbarStyle.Link to="/chat">Chat</ToolbarStyle.Link>
+                </ToolbarStyle.Element>
+            </ToolbarStyle.List>
+            </ToolbarStyle.Container>
+        </ToolbarStyle>
+    );
+};
 
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-`;
-
-Toolbar.Container = Container;
-Toolbar.List = List;
-Toolbar.Link = ListLink;
-Toolbar.Element = ListElement;
-
-
-export { Toolbar };
+export default Toolbar;

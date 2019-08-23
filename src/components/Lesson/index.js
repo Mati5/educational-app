@@ -1,32 +1,29 @@
-import styled from 'styled-components';
+import React from 'react';
+import { LessonStyle } from './style';
+import Moment from 'react-moment';
+import { DATE_FORMAT } from '../../shared/config';
 
-import { rem } from '../../helpers/heleprs';
-import { H1 } from './H1';
-import { H2 } from './H2';
-import { Header } from './Header';
-import { Details } from './Details';
-import { Content } from './Content';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+ 
+const Lesson = ({post, sidebarOpened, children}) => {
 
-const Lesson = styled.article`
-    width: ${props => props.sidebarOpened ? "65%" : "80%"};
-    float: ${props => props.sidebarOpened ? "right" : "none"};
-    font-size: ${rem(14)};
-    line-height: ${rem(25)};
-    /* padding: ${rem(20)}; */
-    margin: 0 auto;
-    position: relative;
+    return (
+        <LessonStyle sidebarOpened={sidebarOpened}>
+            <LessonStyle.Header>
+                    <LessonStyle.Title>{post.title}</LessonStyle.Title>
+                    <LessonStyle.Details>
+                        <FontAwesomeIcon icon={faCalendarAlt} />
+                        <LessonStyle.Details.Date>
+                            <Moment date={post.date} 
+                                    format={DATE_FORMAT} />
+                        </LessonStyle.Details.Date>
+                    </LessonStyle.Details>
+                </LessonStyle.Header>
+                <LessonStyle.Content dangerouslySetInnerHTML={{__html: post.content}} />
+                {children}
+        </LessonStyle>
+    );
+};
 
-    @media(min-width: 1192px) {
-        width: auto;
-        float: none;
-        margin-left: ${props => props.sidebarOpened ? rem(400) : rem(50)};
-    }
-`;
-
-Lesson.Title = H1;
-Lesson.H2 = H2;
-Lesson.Header = Header;
-Lesson.Details = Details;
-Lesson.Content = Content;
-
-export { Lesson };
+export default Lesson;

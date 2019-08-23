@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import Rectangle from '../../components/Rectangle/index';
+import Pagination from '../../components/Navigation/Pagination/index';
 import history from '../../history';
 import { getLessons, clearLessons } from '../../store/Lessons/actions';
-import Pagination from '../../components/Navigation/Pagination/index';
+
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFolderOpen } from '@fortawesome/free-solid-svg-icons';
-import { Button } from '../../components/UI/Button/Button';
-import { H3 } from '../../components/Headers/index';
-import { AppContainer } from '../../components/AppContainer/AppContainer';
+import { AppContainer } from '../../shared/AppContainer';
 import { HeaderSection } from '../../components/Headers/HeaderSection';
-import { Rectangle } from '../../components/Rectangle/index';
 
 const Lessons = ({getLessons, clearLessons, loading, lessons, location}) => {
     const [postsPerPage] = useState(10);
@@ -46,19 +43,7 @@ const Lessons = ({getLessons, clearLessons, loading, lessons, location}) => {
     let lessonList = <CircularProgress />
     if(!loading) {
         lessonList = lessons.slice(indexOfFirstPost, indexOfLastPost).map(lesson => (
-            <Rectangle key={lesson.id}>
-                <Rectangle.Icon>
-                    <FontAwesomeIcon icon={faFolderOpen} />
-                </Rectangle.Icon>
-                <Rectangle.Header>
-                    <H3 width="70%">
-                        <Rectangle.Link to={{ pathname: `/lessons/${lesson.title}`, search: `?id=${lesson.id}` }}>{lesson.title}</Rectangle.Link>
-                    </H3>
-                    <Button 
-                        buttonColor="#07a9e4"
-                        onClick={() => history.push({ pathname: `/lessons/${lesson.title}`, search: `?id=${lesson.id}` })}>Przejdź do lekcji</Button>
-                </Rectangle.Header>
-            </Rectangle>
+            <Rectangle key={lesson.id} post={lesson} />
         ));
     }
    

@@ -1,14 +1,17 @@
-import styled from 'styled-components';
+import React from 'react';
+import { FooterStyle } from './style';
 
-import { rem } from '../../helpers/heleprs';
+import { AppContainer } from '../../shared/AppContainer';
 
-const Footer = styled.footer`
-    background-color: #f0f0f0;
-    color: #b0b0b0;
-    font-size: ${rem(15)};
-    width: 100%;
-    padding: ${rem(40)} 0;
-    margin-top: ${rem(50)};
-`;
+const Footer = () => {
 
-export { Footer };
+    return (
+        <FooterStyle>
+            <AppContainer>
+                2019 © Wszelkie prawa zastrzeżone.
+            </AppContainer>
+        </FooterStyle>
+    );
+};
+
+export default Footer;

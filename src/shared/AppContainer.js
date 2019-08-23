@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { rem } from '../../helpers/heleprs';
+import { rem } from '../helpers/heleprs';
 
 const AppContainer = styled.div`
     padding: ${rem(1)} ${rem(15)};

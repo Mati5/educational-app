@@ -1,5 +1,5 @@
-import axios from 'axios';
 import * as actionTypes from './actionTypes';
+import * as api from './api';
 
 export const getMessagesAction = () => ({
     type: actionTypes.GET_MESSAGES
@@ -17,7 +17,7 @@ export const clearMessages = () => ({
 export const getMessages = () => dispatch => {
     dispatch(getMessagesAction());
 
-    axios.get('/api/chat')
+   api.fetchMessages()
         .then(response => {
             let messageList = response.data;
             dispatch(getMessagesSuccess(messageList));
@@ -25,7 +25,7 @@ export const getMessages = () => dispatch => {
         .catch(error => {
             console.log(error);
         })
-}
+};
 
 export const addMessageSuccess = (message) => ({
     type: actionTypes.ADD_MESSAGE_SUCCESS,
@@ -35,7 +35,7 @@ export const addMessageSuccess = (message) => ({
 export const addMessage = (message) => dispatch => {
     // dispatch(addMessageAction());
 
-    axios.post('/api/chat', message)
+   api.createMessage(message)
         .then(response => {
             const addedMessage = response.data;
 
@@ -43,23 +43,3 @@ export const addMessage = (message) => dispatch => {
            
         })
 };
-
-export const getUsers = () => dispatch => {
-    axios.get("/api/users")
-        .then(response => {
-            const users = response.data;
-            dispatch(getUsersSuccess(users));
-        })
-        .catch(error => {
-            console.log(error);
-        });
-}
-
-export const getUsersSuccess = (users) => ({
-    type: actionTypes.GET_USERS_SUCCESS,
-    payload: users
-});
-
-export const clearUsers = () => ({
-    type: actionTypes.CLEAR_USERS
-});

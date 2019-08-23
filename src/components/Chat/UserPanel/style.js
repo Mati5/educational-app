@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
-import { rem } from '../../helpers/heleprs';
-import { Avatar } from '../Shoutbox/Avatar';
+import { rem } from '../../../helpers/heleprs';
+import { Avatar } from '../Shoutbox/style';
 
 
-const UserPanel = styled.div`
-    /* width: ${rem(250)}; */
+const UserPanelStyle = styled.div`
+    width: ${rem(400)};
     height: 100%;
     background-color: #fff;
     padding: ${rem(30)};
+    position: relative;
 `;
 
 const UserPanelAvatar = styled(Avatar)`
@@ -50,9 +51,22 @@ const Button = styled.button`
     }
 `;
 
-UserPanel.Avatar = UserPanelAvatar;
-UserPanel.Details = Details;
-UserPanel.Input = Input;
-UserPanel.Button = Button;
+const ButtonBack = styled.button`
+    background-color: transparent;
+    width: ${rem(45)};
+    height: ${rem(45)};
+    border: 0;
+    font-size: ${rem(24)};
+    cursor: pointer;
+    position: absolute;
+    top: ${rem(5)};
+    left: ${rem(5)};
+`;
 
-export { UserPanel };
+UserPanelStyle.Avatar = UserPanelAvatar;
+UserPanelStyle.Details = Details;
+UserPanelStyle.Input = Input;
+UserPanelStyle.Button = Button;
+UserPanelStyle.ButtonBack = ButtonBack;
+
+export { UserPanelStyle };

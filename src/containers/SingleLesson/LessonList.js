@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { Sidebar } from '../../components/Navigation/Sidebar/index';
+import Sidebar from '../../components/Navigation/Sidebar/index';
 import { getLessons, clearLessons } from '../../store/Lessons/actions';
 
 const LessonList = ({getLessons, clearLessons, loading, lessons, sidebarOpened}) => {
@@ -13,23 +13,9 @@ const LessonList = ({getLessons, clearLessons, loading, lessons, sidebarOpened})
         }
     }, [getLessons, clearLessons]);
 
-    let lessonList = <p>Loading...</p>;
-
-    if(!loading) {
-        lessonList = lessons.map((lesson, index) => (
-            <Sidebar.Element key={lesson.id}>
-                <Sidebar.Link to={{ pathname: `/lessons/${lesson.title}`, search: `?id=${lesson.id}` }}>{index+1}. {lesson.title}</Sidebar.Link>
-            </Sidebar.Element>
-        ));
-    }
-
     return (
         <React.Fragment>
-            <Sidebar opened={sidebarOpened}>
-                <Sidebar.List>
-                    {lessonList}
-                </Sidebar.List>
-            </Sidebar>
+            <Sidebar opened={sidebarOpened} loadedPosts={loading} posts={lessons} />
         </React.Fragment>
     );
 }

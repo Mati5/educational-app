@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
-import { rem } from '../../helpers/heleprs';
+import { rem } from '../../../helpers/heleprs';
 
-import { Avatar } from '../Shoutbox/Avatar';
+import { Avatar } from '../Shoutbox/style';
 
-const Sidebar = styled.div`
+const SidebarStyle = styled.div`
     background-color: #ecebf9;
-    /* width: ${rem(400)}; */
+    width: ${rem(150)};
     height: 100%;
+    overflow-y: auto;
   
     /* position: fixed;
     top: 0;
@@ -31,9 +32,10 @@ const User = styled.li`
     padding: ${rem(25)};
 `;
 
-const SidebarAvatar = styled(Avatar)`
+const SidebarStyleAvatar = styled(Avatar)`
     width: ${rem(60)};
     height: ${rem(60)};
+    margin: 0 auto;
 `;
 
 const Text = styled.p`
@@ -41,9 +43,9 @@ const Text = styled.p`
     font-weight: 600;
 `;
 
-Sidebar.ListUsers = ListUsers;
-Sidebar.ListUsers.User = User;
-Sidebar.ListUsers.User.Avatar = SidebarAvatar;
-Sidebar.ListUsers.User.Text = Text;
+SidebarStyle.ListUsers = ListUsers;
+SidebarStyle.ListUsers.User = User;
+SidebarStyle.ListUsers.User.Avatar = SidebarStyleAvatar;
+SidebarStyle.ListUsers.User.Text = Text;
 
-export { Sidebar };
+export { SidebarStyle };

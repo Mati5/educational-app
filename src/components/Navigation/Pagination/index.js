@@ -1,62 +1,8 @@
 import React from 'react';
-import { Link }  from 'react-router-dom';
-import styled from 'styled-components';
+import { PaginationStyle } from './style';
 import history from '../../../history';
 
-import { rem } from '../../../helpers/heleprs';
-
 const Pagination = ({ postsPerPage, totalPosts, currentPage, onPageChanged }) => {
-    const Pagination = styled.nav`
-        display: flex;
-        justify-content: flex-end;
-        margin: ${rem(35)} 0;
-    `;
-
-    const List = styled.ul`
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-    `;
-
-    const Element = styled.li`
-        align-self: flex-end;
-        border-right: 1px solid #ccc;
-        transform: skew(-15deg);
-
-        :last-child {
-            border-right: 0;
-        }
-    `;
-
-    const ListLink = styled(Link)`
-        background-color: ${props => props.active ? '#00405d' : 'transparent'};
-        color: ${props => props.active ? '#fff' : '#616161'};
-        font-size: ${rem(12)};
-        border: 0;
-        padding: ${rem(15)} ${rem(20)};
-        display: block;
-
-        cursor: pointer;
-        transition: 0.3s background ease-in-out;
-
-        :hover {
-            background-color: #11516e;
-            color: #fff;
-        }
-    `;
-
-    const Dots = styled(Element)`
-        align-self: flex-end;
-        padding: 0 ${rem(20)};
-        padding-top: ${rem(15)};
-    `;
-
-    Pagination.List = List;
-    Pagination.Element = Element;
-    Pagination.Link = ListLink;
-    Pagination.Element.Dots = Dots;
-
     const numbers = [];
     const last = totalPosts;
     const right = currentPage + 3;
@@ -96,37 +42,37 @@ const Pagination = ({ postsPerPage, totalPosts, currentPage, onPageChanged }) =>
     }
 
     return (
-        <Pagination>
-            <Pagination.List>
-                <Pagination.Element>
-                     <Pagination.Link
+        <PaginationStyle>
+            <PaginationStyle.List>
+                <PaginationStyle.Element>
+                     <PaginationStyle.Link
                         type="button"
                         as="button" 
                         onClick={() => handlemoveLeft()}
-                        disabled={currentPage<=1}>Poprzednia</Pagination.Link>
-                </Pagination.Element>
+                        disabled={currentPage<=1}>Poprzednia</PaginationStyle.Link>
+                </PaginationStyle.Element>
                 {rangeWithDots.map((number, index) => (
                     number === '...' ?
-                    <Pagination.Element.Dots key={index}>
+                    <PaginationStyle.Element.Dots key={index}>
                         {number}
-                    </Pagination.Element.Dots> :
-                    <Pagination.Element key={index}>
-                        <Pagination.Link 
+                    </PaginationStyle.Element.Dots> :
+                    <PaginationStyle.Element key={index}>
+                        <PaginationStyle.Link 
                             to={`?page=${number}`} 
                             onClick={() => onPageChanged(number)} 
-                            active={(currentPage===number ? 1 : 0)}>{number}</Pagination.Link>
-                    </Pagination.Element> 
+                            active={(currentPage===number ? 1 : 0)}>{number}</PaginationStyle.Link>
+                    </PaginationStyle.Element> 
                 ))}
-                <Pagination.Element>
-                     <Pagination.Link
+                <PaginationStyle.Element>
+                     <PaginationStyle.Link
                         type="button"
                         as="button" 
                         onClick={() => handlemoveRight()}
-                        disabled={(currentPage >= Math.ceil(totalPosts/postsPerPage))}>Następna</Pagination.Link>
-                </Pagination.Element>
-            </Pagination.List>
-        </Pagination>
+                        disabled={(currentPage >= Math.ceil(totalPosts/postsPerPage))}>Następna</PaginationStyle.Link>
+                </PaginationStyle.Element>
+            </PaginationStyle.List>
+        </PaginationStyle>
     )
-}
+};
 
 export default Pagination;

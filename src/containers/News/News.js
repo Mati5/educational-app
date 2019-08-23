@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AppContainer } from '../../components/AppContainer/AppContainer';
+import { AppContainer } from '../../shared/AppContainer';
 import { H2 } from '../../components/Headers';
 import NewsItem from '../../components/NewsItem/index';
 

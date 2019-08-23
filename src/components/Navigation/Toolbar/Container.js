@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { em } from '../.././../helpers/heleprs';
-import { AppContainer } from '../../AppContainer/AppContainer';
+// import { em } from '../.././../helpers/heleprs';
+import { AppContainer } from '../../../shared/AppContainer';
 
 const Container = styled(AppContainer)`
     display: flex;

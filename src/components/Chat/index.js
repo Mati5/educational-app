@@ -1,17 +1,36 @@
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
+import { ChatMKStyle } from './style';
+import Shoutbox  from './Shoutbox/index';
+import UserPanel from './UserPanel/index';
+import Sidebar from './Sidebar/index';
 
-import { rem } from '../../helpers/heleprs';
-import { Sidebar } from './Sidebar';
-import { UserPanel } from './UserPanel';
+const ChatMK = (props) => {
+    const [userPanelParam, setUserPanelParam] = useState();
 
-const ChatMK = styled.div`
-    width: 100%;
-    height: 100%;
-    background-color: #f1f1f1;
-    display: flex;
-`;
+    useEffect(()=> {
+        if(!props.auth) {
+            setUserPanelParam();
+        }
+    }, [props.auth, setUserPanelParam]);
 
-ChatMK.Sidebar = Sidebar;
-ChatMK.UserPanel = UserPanel;
+    
+    return (
+        <ChatMKStyle>
+            <Sidebar users={props.users} />
 
-export { ChatMK };
+            <Shoutbox messages={props.messages} 
+                      inputChanged={props.inputChanged} 
+                      sendMessage={props.sendMessage} />
+                      
+            <UserPanel auth={props.auth} 
+                       userPanelParam={userPanelParam}
+                       setUserPanelParam={setUserPanelParam} 
+                       inputChanged={props.inputChanged} 
+                       signUp={props.signUp}
+                       disconnect={props.disconnect} />
+
+        </ChatMKStyle>
+    );
+};
+
+export default ChatMK;
