@@ -25,15 +25,6 @@ const Details = styled.div`
     margin: ${rem(15)} 0;
 `;
 
-const Input = styled.input`
-    width: 100%;
-    color: #222;
-    border: ${rem(2)} solid #ecebf9;
-    border-radius: ${rem(6)};
-    padding: ${rem(10)};
-    margin-bottom: ${rem(10)};
-`;
-
 const Button = styled.button`
     background-color: ${props => props.bgColor};
     width: 100%;
@@ -65,7 +56,6 @@ const ButtonBack = styled.button`
 
 UserPanelStyle.Avatar = UserPanelAvatar;
 UserPanelStyle.Details = Details;
-UserPanelStyle.Input = Input;
 UserPanelStyle.Button = Button;
 UserPanelStyle.ButtonBack = ButtonBack;
 

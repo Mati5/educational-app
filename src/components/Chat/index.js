@@ -19,6 +19,7 @@ const ChatMK = (props) => {
             <Sidebar users={props.users} />
 
             <Shoutbox messages={props.messages} 
+                      auth={props.auth}
                       inputChanged={props.inputChanged} 
                       sendMessage={props.sendMessage} />
                       
@@ -27,6 +28,7 @@ const ChatMK = (props) => {
                        setUserPanelParam={setUserPanelParam} 
                        inputChanged={props.inputChanged} 
                        signUp={props.signUp}
+                       signIn={props.signIn}
                        disconnect={props.disconnect} />
 
         </ChatMKStyle>

@@ -1,4 +1,6 @@
 import React from 'react';
+import LoginForm from '../LoginForm/index';
+
 import { UserPanelStyle } from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
@@ -13,12 +15,8 @@ const UserPanel = (props) => {
                             <img src={"https://image.shutterstock.com/image-vector/male-default-avatar-profile-gray-260nw-387037984.jpg"} alt="" />
                         </UserPanelStyle.Avatar>
                         <UserPanelStyle.Details>
-                            <UserPanelStyle.Input type="text" onChange={(event) => props.inputChanged(event, 'username')} placeholder="username" />
-                            <UserPanelStyle.Input type="password" onChange={(event) => props.inputChanged(event, 'password')} placeholder="password" />
+                            <LoginForm onSubmit={props.signIn} />
                         </UserPanelStyle.Details>
-                        <UserPanelStyle.Button type="button" 
-                                                    bgColor="#7dd356"
-                                                    disabled>Connect</UserPanelStyle.Button>
                     </React.Fragment>
                 );
             case 'register':
@@ -27,14 +25,9 @@ const UserPanel = (props) => {
                         <UserPanelStyle.Avatar>
                             <img src={"https://image.shutterstock.com/image-vector/male-default-avatar-profile-gray-260nw-387037984.jpg"} alt="" />
                         </UserPanelStyle.Avatar>
-                        <input type="file" />
                         <UserPanelStyle.Details>
-                            <UserPanelStyle.Input type="text" onChange={(event) => props.inputChanged(event, 'username')} placeholder="username" />
-                            <UserPanelStyle.Input type="password" onChange={(event) => props.inputChanged(event, 'password')} placeholder="password" />
+                            <LoginForm onSubmit={props.signUp} register={true} />
                         </UserPanelStyle.Details>
-                        <UserPanelStyle.Button type="button" 
-                                                    bgColor="#7dd356"
-                                                    onClick={props.signUp}>Sign up</UserPanelStyle.Button>
                     </React.Fragment>
                 );
             case 'authenticated':

@@ -47,9 +47,14 @@ const Chat = ({clientRef, messages, getMessages, addMessageSuccess, getUsers, cl
         clientRef.sendMessage('/app/add', JSON.stringify(message));
     };
 
-    const signUpHandler = () => {
-        clientRef.sendMessage('/app/addUser', JSON.stringify(userForm));
+    const signUpHandler = (userData) => {
+        clientRef.sendMessage('/app/addUser', JSON.stringify(userData));
     };
+
+    const signInHandler = (userData) => {
+        console.log("SignIn", userData);
+        setAuthenticated(true);
+    }
 
     const disconnectHandler = () => {
         setAuthenticated(false);
@@ -64,7 +69,8 @@ const Chat = ({clientRef, messages, getMessages, addMessageSuccess, getUsers, cl
                     messages={messages} 
                     auth={authenticated}
                     inputChanged={inputChangeHandler} 
-                    signUp={() => signUpHandler()}
+                    signUp={signUpHandler}
+                    signIn={signInHandler}
                     sendMessage={sendMessage}
                     disconnect={disconnectHandler} />
 

@@ -22,10 +22,13 @@ const Shoutbox = (props) => {
                 )) : null}
             </ShoutboxStyle.Posts>
             <ShoutboxStyle.Bottom>
-                <ShoutboxStyle.Input type="text" onChange={(event) => props.inputChanged(event, 'content')} placeholder="content" />
-                <ShoutboxStyle.Button onClick={() => props.sendMessage()}>
-                    <FontAwesomeIcon icon={faPaperPlane} />
-                </ShoutboxStyle.Button>
+                {props.auth ? 
+                <React.Fragment>
+                    <ShoutboxStyle.Input type="text" onChange={(event) => props.inputChanged(event, 'content')} placeholder="content" /> 
+                    <ShoutboxStyle.Button onClick={() => props.sendMessage()}>
+                        <FontAwesomeIcon icon={faPaperPlane} />
+                    </ShoutboxStyle.Button>
+                </React.Fragment> : null }
             </ShoutboxStyle.Bottom>
         </ShoutboxStyle>
     );
