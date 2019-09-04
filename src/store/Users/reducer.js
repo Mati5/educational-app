@@ -12,6 +12,11 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 userList: action.payload
             }
+        case actionTypes.SET_USERS:
+            return {
+                ...state,
+                userList: action.payload
+            }
         case actionTypes.CLEAR_USERS:
             return {
                ...initialState

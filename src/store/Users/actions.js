@@ -3,7 +3,7 @@ import * as actionTypes from './actionTypes';
 import * as api from './api';
 
 export const getUsers = () => dispatch => {
-    api.fetchUsers()
+    api.fetchActiveUsers()
         .then(response => {
             const users = response.data;
             dispatch(getUsersSuccess(users));
@@ -15,6 +15,11 @@ export const getUsers = () => dispatch => {
 
 export const getUsersSuccess = (users) => ({
     type: actionTypes.GET_USERS_SUCCESS,
+    payload: users
+});
+
+export const setUsers = (users) => ({
+    type: actionTypes.SET_USERS,
     payload: users
 });
 

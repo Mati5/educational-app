@@ -9,6 +9,20 @@ const SidebarStyle = styled.div`
     width: ${rem(150)};
     height: 100%;
     overflow-y: auto;
+
+    ::-webkit-scrollbar {
+        width: ${rem(8)};
+    }
+
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: darkgrey;
+        outline: 1px solid slategrey;
+    }
   
     /* position: fixed;
     top: 0;

@@ -24,9 +24,9 @@ const ChatMK = (props) => {
                       sendMessage={props.sendMessage} />
                       
             <UserPanel auth={props.auth} 
+                       userDetails={props.userDetails}
                        userPanelParam={userPanelParam}
                        setUserPanelParam={setUserPanelParam} 
-                       inputChanged={props.inputChanged} 
                        signUp={props.signUp}
                        signIn={props.signIn}
                        disconnect={props.disconnect} />

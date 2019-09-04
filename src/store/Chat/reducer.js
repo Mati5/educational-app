@@ -26,7 +26,7 @@ const chatReducer = (state = initialState, action) => {
         case actionTypes.ADD_MESSAGE_SUCCESS:
             return {
                 ...state,
-                messageList: [...state.messageList, action.payload],
+                messageList: [action.payload, ...state.messageList],
                 loading: false
             }
         default:

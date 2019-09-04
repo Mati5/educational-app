@@ -1,7 +1,6 @@
 import React from 'react';
 import { ShoutboxStyle } from './style';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import MessageForm from '../MessageForm/index';
 
 const Shoutbox = (props) => {
     return (
@@ -24,10 +23,7 @@ const Shoutbox = (props) => {
             <ShoutboxStyle.Bottom>
                 {props.auth ? 
                 <React.Fragment>
-                    <ShoutboxStyle.Input type="text" onChange={(event) => props.inputChanged(event, 'content')} placeholder="content" /> 
-                    <ShoutboxStyle.Button onClick={() => props.sendMessage()}>
-                        <FontAwesomeIcon icon={faPaperPlane} />
-                    </ShoutboxStyle.Button>
+                    <MessageForm onSubmit={props.sendMessage} />
                 </React.Fragment> : null }
             </ShoutboxStyle.Bottom>
         </ShoutboxStyle>

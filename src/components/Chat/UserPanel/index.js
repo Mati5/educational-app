@@ -15,7 +15,7 @@ const UserPanel = (props) => {
                             <img src={"https://image.shutterstock.com/image-vector/male-default-avatar-profile-gray-260nw-387037984.jpg"} alt="" />
                         </UserPanelStyle.Avatar>
                         <UserPanelStyle.Details>
-                            <LoginForm onSubmit={props.signIn} />
+                            <LoginForm onSubmit={props.signIn} register={false} />
                         </UserPanelStyle.Details>
                     </React.Fragment>
                 );
@@ -37,7 +37,7 @@ const UserPanel = (props) => {
                             <img src={"https://image.shutterstock.com/image-vector/male-default-avatar-profile-gray-260nw-387037984.jpg"} alt="" />
                         </UserPanelStyle.Avatar>
                         <UserPanelStyle.Details>
-                            WItaj~!
+                            Witaj {props.userDetails.username}!
                         </UserPanelStyle.Details>
                         <UserPanelStyle.Button type="button" 
                                                       bgColor="#de5655"

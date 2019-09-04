@@ -69,30 +69,7 @@ const Bottom = styled.div`
     position: relative;
 `;
 
-const Input = styled.textarea`
-    background-color: transparent;
-    width: 100%;
-    max-width: 100%;
-    min-width: 100%;
-    height: ${rem(80)};
-    color: #222;
-    border: 0;
-    border-top: ${rem(1)} solid #ccc;
-    padding: ${rem(10)};
-    padding-right: ${rem(35)};
-`;
 
-const Button = styled.button`
-    background-color: transparent;
-    color: #00405d;
-    font-size: ${rem(24)};
-    border: 0;
-    padding: ${rem(15)};
-    position: absolute;
-    right: ${rem(8)};
-    top: 50%;
-    transform: translateY(-50%);
-`;
 
 UserInfo.Avatar = Avatar;
 
@@ -100,11 +77,9 @@ ShoutboxStyle.Header = Header;
 ShoutboxStyle.Title = Title;
 ShoutboxStyle.Posts = Posts;
 ShoutboxStyle.Post = Post;
-ShoutboxStyle.Input = Input;
 ShoutboxStyle.UserInfo = UserInfo;
 ShoutboxStyle.Content = Content;
 ShoutboxStyle.Bottom = Bottom;
-ShoutboxStyle.Button = Button;
 
 // To shared folder
 export { Avatar }
